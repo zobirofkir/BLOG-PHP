@@ -1,6 +1,12 @@
 <?php
 session_start();
-include "/connection/connection.php";
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
+
+include "../connection/connection.php";
 if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];

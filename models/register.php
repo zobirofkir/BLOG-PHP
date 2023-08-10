@@ -1,7 +1,18 @@
 <?php
 session_start();
-    include "/connection/connection.php";
-    if (isset($_POST["submit"])){
+
+
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
+include "../connection/connection.php";
+
+
+if (isset($_POST["submit"])){
         $fullname = $_POST["fullname"];
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -29,22 +40,16 @@ session_start();
             $post_user->bindParam(":password", $hashed_password); // Use the hashed password
             $post_user->bindParam(":date", $date);
             $_SESSION["fullname"] = $fullname;
-            if ($post_user->execute()){
-                echo "This user has been register";
-            }else{
-                echo "Error !!!";
+            if ($post_user->execute()) {
+                $_SESSION["fullname"] = $fullname;
+                echo "This user has been registered.";
+            } else {
+                echo "Error while registering the user.";
             }
-        }
+        }        
     }
 ?>
 
-    <form method="POST">
-        <input type="username" name="fullname">
-        <input type="email" name="email">
-        <input type="password" name="password">
-        <input type="password" name="confirm_password">
-        
-        <input type="date" name="date">
-        <input type="submit" name="submit">
-    </form>
-    
+
+
+
