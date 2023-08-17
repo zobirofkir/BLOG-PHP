@@ -58,7 +58,10 @@ if (isset($_POST["submit"])) {
             $cookie_value = $fullname;
             $cookie_expiry = time() + (86400 * 30); // Cookie expires in 30 days
             setcookie($cookie_name, $cookie_value, $cookie_expiry, "/"); // "/" means the cookie is available across the entire domain
-            
+
+            $_SESSION['fullname'] = $fullname;
+            $_SESSION['email'] = $email;
+            $_SESSION['date'] = $date;
             // Send an email notification
             $mail = new PHPMailer(true); // Passing true enables exceptions
             try {
@@ -73,7 +76,7 @@ if (isset($_POST["submit"])) {
                 $mail->setFrom('zobirofkir19@gmail.com', 'Zobir'); // Replace with your email and name
                 $mail->addAddress($email, $fullname); // Recipient email and name
                 $mail->Subject = 'Hello ' . $fullname . ', welcome to my blog';
-                $mail->Body = 'Thank you '.$fullname.', for registering on our blog!';
+                $mail->Body = "Thank you $fullname, for registering on our blog, and your email $email has been validated successfully.";
                 
                 $mail->send();
                 echo "This user has been registered and an email has been sent.";
