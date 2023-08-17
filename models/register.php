@@ -56,7 +56,7 @@ if (isset($_POST["submit"])) {
             // Set a cookie
             $cookie_name = "user_cookie";
             $cookie_value = $fullname;
-            $cookie_expiry = time() + (86400 * 30); // Cookie expires in 30 days
+            $cookie_expiry = time() + (86400 * 365); // Cookie expires in 1 year
             setcookie($cookie_name, $cookie_value, $cookie_expiry, "/"); // "/" means the cookie is available across the entire domain
 
             $_SESSION['fullname'] = $fullname;

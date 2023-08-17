@@ -45,4 +45,50 @@
     } catch (PDOException $e) {
         echo "Error creating table: " . $e->getMessage();
     }
+
+    try {
+        $blog_post_cloud = $database->prepare("CREATE TABLE blog_posts_cloud (
+            id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+            image BLOB,
+            date_pub INT NOT NULL,
+            month_pub INT NOT NULL,
+            title VARCHAR(120) NOT NULL,
+            paragraph TEXT NOT NULL
+        )");
+        $blog_post_cloud->execute();
+        echo "Table 'blog_posts' created successfully.";
+    } catch (PDOException $e) {
+        echo "Error creating table: " . $e->getMessage();
+    }
+
+    try {
+        $blog_post_cloud = $database->prepare("CREATE TABLE blog_posts_sécurité (
+            id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+            image BLOB,
+            date_pub INT NOT NULL,
+            month_pub INT NOT NULL,
+            title VARCHAR(120) NOT NULL,
+            paragraph TEXT NOT NULL
+        )");
+        $blog_post_cloud->execute();
+        echo "Table 'blog_posts' created successfully.";
+    } catch (PDOException $e) {
+        echo "Error creating table: " . $e->getMessage();
+    }
+
+    try {
+        $blog_post_cloud = $database->prepare("CREATE TABLE blog_posts_web (
+            id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+            image BLOB,
+            date_pub INT NOT NULL,
+            month_pub INT NOT NULL,
+            title VARCHAR(120) NOT NULL,
+            paragraph TEXT NOT NULL
+        )");
+        $blog_post_cloud->execute();
+        echo "Table 'blog_posts' created successfully.";
+    } catch (PDOException $e) {
+        echo "Error creating table: " . $e->getMessage();
+    }
 ?>
+

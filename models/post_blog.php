@@ -6,7 +6,7 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
 $successMessage = $errorMessage = '';
-
+ 
 if (isset($_POST["send_blog"])) {
     try {
         $image = file_get_contents($_FILES["image"]["tmp_name"]); // Read image file contents

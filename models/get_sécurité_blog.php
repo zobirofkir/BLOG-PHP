@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
  
-$GetBlogPosts = $database->prepare("SELECT * FROM blog_posts");
+$GetBlogPosts = $database->prepare("SELECT * FROM blog_posts_sécurité");
 $GetBlogPosts->execute();
 $blogPosts = $GetBlogPosts->fetchAll(PDO::FETCH_ASSOC);
 
