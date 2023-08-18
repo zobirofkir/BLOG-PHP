@@ -26,12 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["send_comment"])) {
     $send_comment->bindParam(":website", $website);
 
     if ($send_comment->execute()) {
-        echo "success"; // Use a consistent value for AJAX response
+        echo json_encode(["status" => "success"]); // Send JSON-encoded response
     } else {
-        echo "error"; // Use a consistent value for AJAX response
+        echo json_encode(["status" => "error"]); // Send JSON-encoded response
     }
-} 
-echo json_encode($send_comment);
-
+} else {
+    echo json_encode(["status" => "error"]); // Handle invalid request
+}
 ?>
-
