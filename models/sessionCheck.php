@@ -5,18 +5,22 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
+require "../connection/connection.php";
 
-include "../connection/connection.php";
-
-$response = array();
-
-if (isset($_SESSION["user_id"])) {
-    $response["authenticated"] = true;
-} else {
-    $response["authenticated"] = false;
+// Include the session checking function
+function checkSession() {
+    if (isset($_SESSION['fullname'])) {
+        return $_SESSION['fullname'];
+    } else {
+        return false;
+    }
 }
 
-header("Content-Type: application/json");
-echo json_encode($response);
-?>
+$fullnameSession = checkSession();
 
+if ($fullnameSession) {
+    echo $fullnameSession;
+} else {
+    echo json_encode(["authenticated" => false]); // Return a JSON response indicating authentication status
+}
+?>
