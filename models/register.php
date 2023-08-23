@@ -52,6 +52,12 @@ if (isset($_POST["submit"])) {
 
         if ($post_user->execute()) {
             $_SESSION["fullname"] = $fullname;
+
+            // Set a cookie
+            $cookie_name = "user_cookie";
+            $cookie_value = $fullname;
+            $cookie_expiry = strtotime('Fri, 31 Dec 9999 23:59:59 GMT'); // Cookie expires in the distant future
+            setcookie($cookie_name, $cookie_value, $cookie_expiry, "/"); // "/" means the cookie is available across the entire domain
             $_SESSION['fullname'] = $fullname;
             $_SESSION['email'] = $email;
             $_SESSION['date'] = $date;

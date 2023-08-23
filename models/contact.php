@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["contact"])) {
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
-            $mail->setFrom('zobirofkir30@gmail.com', 'Your Name'); // Set the sender's email and name
+            $mail->setFrom($email, $name); // Set the sender's email and name
             $mail->addAddress('zobirofkir30@gmail.com', $name); // Recipient email and name
 
             $mail->Subject = $subject;
